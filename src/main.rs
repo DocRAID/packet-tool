@@ -1,5 +1,7 @@
+use std::fmt::Error;
+mod function;
 
-mod pcap;
-fn main() {
-    pcap::packet_listen(pcap::device_select());
+fn main() -> Result<(),Error> {
+    let _ = function::run();
+    return Ok(());
 }
