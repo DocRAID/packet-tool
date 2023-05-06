@@ -15,7 +15,7 @@ pub fn check_root() -> Result<(), std::fmt::Error> {
         );
         return Err(std::fmt::Error);
     }
-    return Ok(());
+    Ok(())
 }
 fn read_packets<T: Activated>(mut capture: Capture<T>) {
     while let Ok(packet) = capture.next_packet() {
@@ -32,7 +32,7 @@ pub fn device_select() -> Device {
         .interact()
         .unwrap();
     match devices.get(selection) {
-        Some(device) => return device.clone(),
+        Some(device) => device.clone(),
         None => panic!("Something was worring"),
     }
 }

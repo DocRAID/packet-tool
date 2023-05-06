@@ -17,6 +17,11 @@ pub struct ToolState {
     filter_query: String,
     filter_list: Vec<String>, //더 추가 해야함.
 }
+impl Default for ToolState {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 impl ToolState {
     pub fn new() -> ToolState {
         ToolState {
@@ -56,5 +61,5 @@ fn main() -> Result<(), Box<dyn Error>> {
         println!("{}", e.to_string());
     }
 
-    return Ok(());
+    Ok(())
 }
