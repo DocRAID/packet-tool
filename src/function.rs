@@ -15,7 +15,7 @@ pub fn check_root() -> Result<(), std::fmt::Error> {
         );
         return Err(std::fmt::Error);
     }
-    return Ok(())
+    return Ok(());
 }
 fn read_packets<T: Activated>(mut capture: Capture<T>) {
     while let Ok(packet) = capture.next_packet() {

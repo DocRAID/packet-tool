@@ -1,25 +1,31 @@
-use std::{error::Error, io, time::Duration};
+use std::{error::Error, io};
 
-use crossterm::{terminal::{enable_raw_mode, EnterAlternateScreen}, execute, event::EnableMouseCapture};
-use tui::{backend::CrosstermBackend, Terminal};
+use crossterm::{
+    event::EnableMouseCapture,
+    execute,
+    terminal::{enable_raw_mode, EnterAlternateScreen},
+};
+use tui::{
+    backend::{Backend, CrosstermBackend},
+    Terminal,
+};
+
+use crate::ToolState;
 pub enum Mode {
     List,
     Detail,
     Filter,
 }
-enum FilterOption {
+pub enum FilterOption {
+    All,
     Source,
     Destination,
     Protocol,
 }
 
-pub fn setup_tui() -> Result<(), Box<dyn Error>>{
-    enable_raw_mode()?;
-    let mut stdout = io::stdout();
-    execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;
-    let backend = CrosstermBackend::new(stdout);
-    let mut terminal = Terminal::new(backend)?;
-    
-    // let result = run_app(&mut terminal, &mut state);
+pub fn run_app<B: Backend>(
+    terminal: &mut Terminal<B>,
+    state: &mut ToolState,
+) -> Result<(), std::io::Error> {
     Ok(())
 }
