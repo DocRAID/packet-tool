@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 console = "0.15.5"
+crossterm = "0.26.1"
 dialoguer = "0.10.4"
 is-root = "0.1.2"
 pcap = "1.0.0"

@@ -3,7 +3,7 @@ use dialoguer::{theme::ColorfulTheme, Select};
 use is_root::is_root;
 use pcap::{Activated, Capture, Device};
 
-pub fn run() -> Result<(), std::fmt::Error> {
+pub fn check_root() -> Result<(), std::fmt::Error> {
     if !is_root() {
         eprintln!(
             "{}",
@@ -15,10 +15,8 @@ pub fn run() -> Result<(), std::fmt::Error> {
         );
         return Err(std::fmt::Error);
     }
-    packet_listen(device_select());
-    return Ok(());
+    return Ok(())
 }
-
 fn read_packets<T: Activated>(mut capture: Capture<T>) {
     while let Ok(packet) = capture.next_packet() {
         println!("received packet!: {:?} ", packet);
